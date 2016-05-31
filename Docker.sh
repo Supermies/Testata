@@ -1,5 +1,5 @@
 #!/bin/bash
-pvcreate /dev/hda2
+pvcreate /dev/sda
 /etc/init.d/lvm2 start
 sudo apt-get update
 sudo apt-get upgrade -y
