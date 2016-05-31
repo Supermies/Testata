@@ -1,6 +1,10 @@
 #!/bin/bash
 pvcreate /dev/sda
-/etc/init.d/lvm2 start
+vgcreate VG /dev/sda
+lvcreate -l 100%FREE -n levy VG
+mkfs -t ext3 /dev/VG/levy
+mkdir /kansio
+mount /dev/VG/levy /kansio
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install apt-transport-https ca-certificates -y
