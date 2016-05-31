@@ -1,4 +1,5 @@
 #!/bin/bash
+grml2hd /dev/hda1 -mbr /dev/hda
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install apt-transport-https ca-certificates -y
