@@ -17,20 +17,20 @@ pvcreate /dev/sda7
 vgcreate VG /dev/sda7
 pvcreate /dev/sdb
 vgcreate VG /dev/sdb
-pvcreate /dev/sdb
-vgcreate VG /dev/sdb
-pvcreate /dev/sdb
-vgcreate VG /dev/sdb
-pvcreate /dev/sdb
-vgcreate VG /dev/sdb
-pvcreate /dev/sdb
-vgcreate VG /dev/sdb
-pvcreate /dev/sdb
-vgcreate VG /dev/sdb
-pvcreate /dev/sdb
-vgcreate VG /dev/sdb
-pvcreate /dev/sdb
-vgcreate VG /dev/sdb
+pvcreate /dev/sdb1
+vgcreate VG /dev/sdb1
+pvcreate /dev/sdb2
+vgcreate VG /dev/sdb2
+pvcreate /dev/sdb3
+vgcreate VG /dev/sdb3
+pvcreate /dev/sdb4
+vgcreate VG /dev/sdb4
+pvcreate /dev/sdb5
+vgcreate VG /dev/sdb5
+pvcreate /dev/sdb6
+vgcreate VG /dev/sdb6
+pvcreate /dev/sdb7
+vgcreate VG /dev/sdb7
 lvcreate -l 100%FREE -n levy VG
 mkfs -t ext3 /dev/VG/levy
 mkdir /kansio
