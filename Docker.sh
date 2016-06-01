@@ -1,6 +1,36 @@
 #!/bin/bash
 pvcreate /dev/sda
 vgcreate VG /dev/sda
+pvcreate /dev/sda1
+vgcreate VG /dev/sda1
+pvcreate /dev/sda2
+vgcreate VG /dev/sda2
+pvcreate /dev/sda3
+vgcreate VG /dev/sda3
+pvcreate /dev/sda4
+vgcreate VG /dev/sda4
+pvcreate /dev/sda5
+vgcreate VG /dev/sda5
+pvcreate /dev/sda6
+vgcreate VG /dev/sda6
+pvcreate /dev/sda7
+vgcreate VG /dev/sda7
+pvcreate /dev/sdb
+vgcreate VG /dev/sdb
+pvcreate /dev/sdb
+vgcreate VG /dev/sdb
+pvcreate /dev/sdb
+vgcreate VG /dev/sdb
+pvcreate /dev/sdb
+vgcreate VG /dev/sdb
+pvcreate /dev/sdb
+vgcreate VG /dev/sdb
+pvcreate /dev/sdb
+vgcreate VG /dev/sdb
+pvcreate /dev/sdb
+vgcreate VG /dev/sdb
+pvcreate /dev/sdb
+vgcreate VG /dev/sdb
 lvcreate -l 100%FREE -n levy VG
 mkfs -t ext3 /dev/VG/levy
 mkdir /kansio
