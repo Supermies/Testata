@@ -1,4 +1,6 @@
 #!/bin/bash
+yes | lvremove VG
+yes | vgremove VG
 pvcreate /dev/sda 
 vgcreate VG /dev/sda
 pvcreate /dev/sda1 
