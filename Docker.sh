@@ -1,9 +1,10 @@
 #!/bin/bash
-pvcreate /dev/sda -y
-vgcreate VG /dev/sda -y
-pvcreate /dev/sda1 -y
-vgcreate VG /dev/sda1 -y
-pvcreate /dev/sda2 -y
+echo y | command
+pvcreate /dev/sda 
+vgcreate VG /dev/sda
+pvcreate /dev/sda1 
+vgcreate VG /dev/sda1 
+pvcreate /dev/sda2 
 vgcreate VG /dev/sda2 -y
 pvcreate /dev/sda3 -y
 vgcreate VG /dev/sda3 -y
