@@ -31,8 +31,8 @@ pvcreate /dev/sdb6
 vgcreate VG /dev/sdb6
 pvcreate /dev/sdb7
 vgcreate VG /dev/sdb7
-lvcreate -l 100%FREE -n levy VG
-mkfs  -t ext4 /dev/VG/levy
+lvcreate -l 100%FREE -n levy VG -y
+mkfs  -t ext4 /dev/VG/levy -y
 mkdir /kansio
 mount /dev/VG/levy /kansio
 sudo apt-get update
