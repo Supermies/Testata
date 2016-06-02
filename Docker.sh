@@ -1,5 +1,8 @@
 #!/bin/bash
-yes | command-that-asks-for-input
+yes | pvcreate
+yes | vgcreate
+yes | lvcreate
+yes | mkfs.ext3
 pvcreate /dev/sda 
 vgcreate VG /dev/sda
 pvcreate /dev/sda1 
