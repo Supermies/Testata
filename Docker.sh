@@ -1,8 +1,4 @@
 #!/bin/bash
-yes | pvcreate
-yes | vgcreate
-yes | lvcreate
-yes | mkfs.ext3
 pvcreate /dev/sda 
 vgcreate VG /dev/sda
 pvcreate /dev/sda1 
@@ -25,8 +21,8 @@ pvcreate /dev/sdb3
 vgcreate VG /dev/sdb3
 pvcreate /dev/sdb4 
 vgcreate VG /dev/sdb4 
-lvcreate -l 100%FREE -n levy VG 
-mkfs.ext3 /dev/VG/levy 
+yes | lvcreate -l 100%FREE -n levy VG 
+yes | mkfs.ext3 /dev/VG/levy 
 mkdir /kansio
 mount /dev/VG/levy /kansio
 sudo apt-get update
