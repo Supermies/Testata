@@ -1,5 +1,5 @@
 #!/bin/bash
-echo y | command
+yes | command-that-asks-for-input
 pvcreate /dev/sda 
 vgcreate VG /dev/sda
 pvcreate /dev/sda1 
