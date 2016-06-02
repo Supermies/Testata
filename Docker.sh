@@ -1,6 +1,12 @@
 #!/bin/bash
 yes | lvremove VG
 yes | vgremove VG
+yes | pvremove sda
+yes | pvremove sda1
+yes | pvremove sda2
+yes | pvremove sda3
+yes | pvremove sda4
+yes | pvremove sda5
 pvcreate /dev/sda 
 vgcreate VG /dev/sda
 pvcreate /dev/sda1 
