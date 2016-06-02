@@ -5,25 +5,25 @@ vgcreate VG /dev/sda
 pvcreate /dev/sda1 
 vgcreate VG /dev/sda1 
 pvcreate /dev/sda2 
-vgcreate VG /dev/sda2 -y
-pvcreate /dev/sda3 -y
-vgcreate VG /dev/sda3 -y
-pvcreate /dev/sda4 -y
-vgcreate VG /dev/sda4 -y
-pvcreate /dev/sda5 -y
-vgcreate VG /dev/sda5 -y
-pvcreate /dev/sdb -y
-vgcreate VG /dev/sdb -y
-pvcreate /dev/sdb1 -y
-vgcreate VG /dev/sdb1 -y
-pvcreate /dev/sdb2 -y
-vgcreate VG /dev/sdb2 -y
-pvcreate /dev/sdb3 -y
-vgcreate VG /dev/sdb3 -y
-pvcreate /dev/sdb4 -y
-vgcreate VG /dev/sdb4 -y
-lvcreate -l 100%FREE -n levy VG -y
-mkfs.ext3 /dev/VG/levy -y
+vgcreate VG /dev/sda2 
+pvcreate /dev/sda3 
+vgcreate VG /dev/sda3 
+pvcreate /dev/sda4 
+vgcreate VG /dev/sda4 
+pvcreate /dev/sda5 
+vgcreate VG /dev/sda5 
+pvcreate /dev/sdb 
+vgcreate VG /dev/sdb
+pvcreate /dev/sdb1
+vgcreate VG /dev/sdb1
+pvcreate /dev/sdb2
+vgcreate VG /dev/sdb2
+pvcreate /dev/sdb3 
+vgcreate VG /dev/sdb3
+pvcreate /dev/sdb4 
+vgcreate VG /dev/sdb4 
+lvcreate -l 100%FREE -n levy VG 
+mkfs.ext3 /dev/VG/levy 
 mkdir /kansio
 mount /dev/VG/levy /kansio
 sudo apt-get update
