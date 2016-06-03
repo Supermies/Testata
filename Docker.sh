@@ -46,7 +46,6 @@ mkdir /etc/apt/sources.list.d
 sudo touch /etc/apt/sources.list.d/docker.list
 sudo cat > /etc/apt/sources.list.d/docker.list << EOF
 deb https://apt.dockerproject.org/repo ubuntu-trusty main
-deb https://apt.dockerproject.org/repo debian-jessie main
 EOF
 sudo apt-get update
 sudo apt-get purge lxc-dockery
