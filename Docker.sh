@@ -1,6 +1,6 @@
 #!/bin/bash
-yes | lvremove VG
-#yes | vgremove VG
+#yes | lvremove VG
+yes | vgremove VG
 pvcreate /dev/sda 
 vgcreate VG /dev/sda
 pvcreate /dev/sda1 
@@ -34,7 +34,7 @@ pvcreate /dev/sdb4
 vgcreate VG /dev/sdb4
 vgextend VG /dev/sdb4
 yes | lvcreate -l 100%FREE -n levy VG 
-yes | mkfs.ext3 /dev/VG/levy 
+#yes | mkfs.ext3 /dev/VG/levy 
 mkdir /kansio
 mount /dev/VG/levy /kansio
 sudo apt-get update
