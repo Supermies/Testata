@@ -55,5 +55,4 @@ sudo apt-get update
 sudo apt-get install linux-image-extra-$(uname -r) -y
 sudo apt-get update
 sudo apt-get install docker-engine -y
-sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.0.1 http://192.168.1.3:8080/v1/scripts/9B388C5EB4B89ED8DB61:1464685200000:ejjtDJzPm9BuRtQTh5q2dzsPKU
-
+sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.0.1 http://192.168.1.3:8080/v1/scripts/9B388C5EB4B89ED8DB61:1465286400000:5qOOui5E9fLMsMY7PrpU3J9IbGY
