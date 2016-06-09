@@ -16,3 +16,4 @@ sudo apt-get update
 sudo apt-get install linux-image-extra-$(uname -r) -y
 sudo apt-get update
 sudo apt-get install docker-engine -y
+sudo docker run -d --restart=always -p 8080:8080 rancher/server:latest
