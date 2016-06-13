@@ -1,3 +1,4 @@
+#cloud-config
 write_files:
   - path: /opt/rancher/bin/start.sh
     permissions: "0755"
