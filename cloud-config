@@ -10,7 +10,7 @@ write_files:
 rancher:
   state:
     fstype: auto
-    dev: LABEL=RANCHER_STATE
+    dev: /dev/sda1
     autoformat:
     - /dev/sda
     - /dev/vda
