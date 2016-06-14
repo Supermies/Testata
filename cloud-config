@@ -10,8 +10,6 @@ rancher:
   services:
     rancher-agent:
       image: rancher/agent:v1.0.1
-      stdin_open: true
-      tty: true
       command: https://192.168.1.3:8080/v1/scripts/8FD1B57205383841D6C6:1465894800000:YWDmtn830m7iLzMqyOSGwHcTaE
       privileged: true
       volumes:
