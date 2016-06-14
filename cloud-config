@@ -1,6 +1,15 @@
 #cloud-config
+write_files:
+  - path: /opt/rancher/bin/start.sh
+    permissions: "0755"
+    owner: root
+    content: |
+      #!/bin/bash
+      echo "I'm doing things on start"
+      sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock rancher/agent:v1.0.1 http://192.168.1.3:8080/v1/scripts/8FD1B57205383841D6C6:1465887600000:bWkYyjuJFEWUfu1cU9sZr8g6ZBg
 rancher:
   state:
+    formatzero: true
     fstype: auto
     dev: /dev/sda1
     autoformat:
