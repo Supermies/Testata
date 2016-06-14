@@ -7,3 +7,11 @@ write_files:
       #!/bin/bash
       echo "I'm doing things on start"
       docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.0.1 http://192.168.1.3:8080/v1/scripts/8FD1B57205383841D6C6:1465819200000:dhEJHFwlePk19u6OY8cz6UNMzGA
+rancher:
+  services:
+    rancher-agent:
+      image: rancher/agent:1.0.1
+      command: http://192.168.100.104:8080/v1/scripts/8FD1B57205383841D6C6:1465819200000:dhEJHFwlePk19u6OY8cz6UNMzGA
+      privileged: true
+      volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
