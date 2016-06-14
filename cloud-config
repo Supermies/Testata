@@ -10,7 +10,7 @@ write_files:
 rancher:
   services:
     rancher-agent:
-      image: rancher/agent:1.0.1
+      image: rancher/agent:v1.0.1
       command: http://192.168.100.104:8080/v1/scripts/8FD1B57205383841D6C6:1465819200000:dhEJHFwlePk19u6OY8cz6UNMzGA
       privileged: true
       volumes:
