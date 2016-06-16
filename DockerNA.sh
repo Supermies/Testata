@@ -19,4 +19,9 @@ sudo apt-get update
 sudo apt-get install docker-engine -y
 sudo usermod -aG docker root
 sudo usermod -aG docker asd
-sg docker -c "docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.0.1 http://192.168.1.3:8080/v1/scripts/8FD1B57205383841D6C6:1465902000000:K7K3C5C5hUHt4yeP3PIO79ELsc"
+touch /etc/init.d/myscript.sh
+sudo cat > /etc/init.d/myscript.sh << EOF
+sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.0.1 http://192.168.1.3:8080/v1/scripts/8FD1B57205383841D6C6:1465902000000:K7K3C5C5hUHt4yeP3PIO79ELsc
+EOF
+sudo chmod +x /etc/init.d/myscript.sh
+sudo update-rc.d myscript.sh defaults
