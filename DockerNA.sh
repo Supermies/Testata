@@ -25,3 +25,19 @@ sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v 
 EOF
 sudo chmod +x /etc/init.d/myscript.sh
 sudo update-rc.d myscript.sh defaults
+sudo mkdir /var/spool/cron/crontabs/croni
+sudo mkdir /var/croni.sh
+sudo cat > /var/croni.sh << EOF
+#!/bin/sh
+
+ping -c5 192.168.1.1
+
+if [ $? -eq 0 ]; then
+    echo "ok"
+else
+    reboot
+fi
+EOF
+sudo cat > /var/spool/cron/crontabs/croni << EOF
+*/1 * * * * /usr/bin/somedirectory/somecommand
+EOF
