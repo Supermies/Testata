@@ -39,5 +39,5 @@ else
 fi
 EOF
 sudo cat > /var/spool/cron/crontabs/croni << EOF
-*/1 * * * * /usr/bin/somedirectory/somecommand
+*/1 * * * * /var/croni.sh
 EOF
