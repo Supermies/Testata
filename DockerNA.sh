@@ -25,8 +25,8 @@ sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v 
 EOF
 sudo chmod +x /etc/init.d/myscript.sh
 sudo update-rc.d myscript.sh defaults
-sudo mkdir /var/spool/cron/crontabs/croni
-sudo mkdir /var/croni.sh
+sudo touch /var/spool/cron/crontabs/croni
+sudo touch /var/croni.sh
 sudo cat > /var/croni.sh << EOF
 #!/bin/sh
 
