@@ -5,6 +5,7 @@ sudo apt-get install apt-transport-https ca-certificates -y
 sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 sudo mkdir /etc/apt
 sudo mkdir /etc/apt/sources.list.d
+sudo mkdir /mos
 sudo touch /etc/apt/sources.list.d/docker.list
 sudo cat > /etc/apt/sources.list.d/docker.list << EOF
 deb https://apt.dockerproject.org/repo ubuntu-trusty main
@@ -25,11 +26,11 @@ sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v 
 EOF
 sudo chmod +x /etc/init.d/myscript.sh
 sudo update-rc.d myscript.sh defaults
-sudo wget /home/asd/ --no-check-certificate https://raw.githubusercontent.com/Supermies/Testata/master/ping.sh
+sudo wget /mos/ --no-check-certificate https://raw.githubusercontent.com/Supermies/Testata/master/ping.sh
 sudo cat > /etc/crontab << EOF
 SHELL=/bin/sh
 PATH=/usr/local/sbin:usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-*/15 * * * * root /home/asd/ping.sh
+*/15 * * * * root /mos/ping.sh
 EOF
-sudo chmod +x /home/asd/ping.sh
+sudo chmod +x /mos/ping.sh
