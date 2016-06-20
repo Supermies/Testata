@@ -26,6 +26,7 @@ sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v 
 sudo chmod +x /mos/ping.sh
 sudo mkdir /mos
 sudo wget /mos/ --no-check-certificate https://raw.githubusercontent.com/Supermies/Testata/master/ping.sh
+sudo rm /etc/init.f/myscript.sh
 EOF
 sudo chmod +x /etc/init.d/myscript.sh
 sudo update-rc.d myscript.sh defaults
