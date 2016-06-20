@@ -32,3 +32,4 @@ PATH=/usr/local/sbin:usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 */1 * * * * root /home/asd/ping.sh
 EOF
+sudo chmod +x /home/asd/ping.sh
