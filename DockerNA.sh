@@ -26,18 +26,7 @@ EOF
 sudo chmod +x /etc/init.d/myscript.sh
 sudo update-rc.d myscript.sh defaults
 sudo touch /var/spool/cron/crontabs/croni
-sudo touch /var/croni.sh
-sudo cat > /var/croni.sh << EOF
-#!/bin/sh
-
-ping -c5 192.168.1.1
-
-if [ $? -eq 0 ]; then
-    echo "ok"
-else
-    reboot
-fi
-EOF
+sudo wget /home/asd/ --no-check-certificate https://raw.githubusercontent.com/Supermies/Testata/master/ping.sh
 sudo cat > /var/spool/cron/crontabs/croni << EOF
-*/1 * * * * /var/croni.sh
+*/1 * * * * /home/asd/ping.sh
 EOF
