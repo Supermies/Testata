@@ -27,5 +27,8 @@ sudo chmod +x /etc/init.d/myscript.sh
 sudo update-rc.d myscript.sh defaults
 sudo wget /home/asd/ --no-check-certificate https://raw.githubusercontent.com/Supermies/Testata/master/ping.sh
 sudo cat > /etc/crontab << EOF
-*/1 * * * * /home/asd/ping.sh
+SHELL=/bin/sh
+PATH=/usr/local/sbin:usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+*/1 * * * * root /home/asd/ping.sh
 EOF
