@@ -1,0 +1,57 @@
+Cassandra:
+  ports:
+  - 9042:9042/tcp
+  - 9160:9160/tcp
+  environment:
+    RANCHER_ENABLE: 'true'
+  labels:
+    io.rancher.container.pull_image: always
+  tty: true
+  image: pboos/rancher-cassandra:3.1
+  volumes:
+  - /var/lib/cassandra
+  stdin_open: true
+mongodbhost:
+  ports:
+  - 27017:27017/tcp
+  image: mongo
+Kaa:
+  ports:
+  - 8080:8080/tcp
+  environment:
+    BOOTSTRAP_ENABLED: 'true'
+    CASSANDRA_HOSTS: Cassandra:9042
+    CONTROL_ENABLED: 'true'
+    DATABASE: cassandra
+    JDBC_HOST: postgreshost
+    JDBC_PORT: '5432'
+    MONGODB_HOSTS: mongodbhost:27017
+    OPERATIONS_ENABLED: 'true'
+    ZK_HOSTS: zk:2181
+  tty: true
+  image: supermies/kaa
+  links:
+  - postgreshost:postgreshost
+  - mongodbhost:mongodbhost
+  - Cassandra:Cassandra
+  - zk:zk
+  stdin_open: true
+zk:
+  ports:
+  - 2181:2181/tcp
+  environment:
+    CONFD_INTERVAL: '60'
+    JVMFLAGS: -Xmx512m -Xms512m
+  tty: true
+  hostname: zk
+  image: rawmind/rancher-zk:3.4.6-1
+  links:
+  - mongodbhost:mongodbhost
+  - Cassandra:Cassandra
+  volumes:
+  - /opt/zk/data
+postgreshost:
+  environment:
+    POSTGRES_DB: kaa
+    POSTGRES_PASSWORD: admin
+  image: postgres
