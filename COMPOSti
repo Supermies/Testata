@@ -11,47 +11,60 @@ Cassandra:
   volumes:
   - /var/lib/cassandra
   stdin_open: true
-mongodbhost:
-  ports:
-  - 27017:27017/tcp
-  image: mongo
+#mongodbhost:
+#  ports:
+#  - 27017:27017/tcp
+#  image: mongo
 Kaa:
   ports:
-  - 8080:8080/tcp
+    - "9000:22"
+    - "8080:8080"
+    - "9888:9888"
+    - "9889:9889"
+    - "9997:9997"
+    - "9999:9999"
   environment:
-    BOOTSTRAP_ENABLED: 'true'
+  #  BOOTSTRAP_ENABLED: 'true'
     CASSANDRA_HOSTS: Cassandra:9042
     CONTROL_ENABLED: 'true'
     DATABASE: cassandra
-    JDBC_HOST: postgreshost
-    JDBC_PORT: '5432'
+    JDBC_HOST: mariadb
+    JDBC_PORT: 3306
     MONGODB_HOSTS: mongodbhost:27017
     OPERATIONS_ENABLED: 'true'
     ZK_HOSTS: zk:2181
+  command: bash -c "/usr/bin/kaa-node start && while true; do sleep 1; done"
   tty: true
   image: supermies/kaa
   links:
-  - postgreshost:postgreshost
-  - mongodbhost:mongodbhost
+  - mariadb
+# - mongodbhost:mongodbhost
   - Cassandra:Cassandra
   - zk:zk
   stdin_open: true
 zk:
   ports:
   - 2181:2181/tcp
-  environment:
-    CONFD_INTERVAL: '60'
-    JVMFLAGS: -Xmx512m -Xms512m
   tty: true
   hostname: zk
-  image: rawmind/rancher-zk:3.4.6-1
+  image: jplock/zookeeper
   links:
   - mongodbhost:mongodbhost
   - Cassandra:Cassandra
+  - mariadb
   volumes:
   - /opt/zk/data
-postgreshost:
+#postgreshost:
+#  environment:
+#    POSTGRES_DB: kaa
+#    POSTGRES_PASSWORD: admin
+#  image: postgres
+mariadb:
+  image: mariadb:5.5
   environment:
-    POSTGRES_DB: kaa
-    POSTGRES_PASSWORD: admin
-  image: postgres
+    MYSQL_ROOT_PASSWORD: maria
+    MYSQL_DATABASE: kaa
+    MYSQL_USER: sqladmin
+    MYSQL_PASSWORD: admin
+  expose:
+  - "3306"
