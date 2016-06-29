@@ -17,7 +17,7 @@ Cassandra:
 #  image: mongo
 Kaa:
   ports:
-    - "9000:22"
+    - "22:22"
     - "8080:8080"
     - "9888:9888"
     - "9889:9889"
@@ -32,7 +32,7 @@ Kaa:
     JDBC_PORT: 3306
     MONGODB_HOSTS: mongodbhost:27017
     OPERATIONS_ENABLED: 'true'
-    ZK_HOSTS: zk:2181
+    ZK_HOSTS: zookeeper:2181
   command: bash -c "/usr/bin/kaa-node start && while true; do sleep 1; done"
   tty: true
   image: supermies/kaa
@@ -40,13 +40,13 @@ Kaa:
   - mariadb
 # - mongodbhost:mongodbhost
   - Cassandra:Cassandra
-  - zk:zk
+  - zookeeper
   stdin_open: true
-zk:
+zookeeper:
   ports:
   - 2181:2181/tcp
   tty: true
-  hostname: zk
+  hostname: zookeeper
   image: jplock/zookeeper
   links:
   - mongodbhost:mongodbhost
@@ -65,6 +65,6 @@ mariadb:
     MYSQL_ROOT_PASSWORD: maria
     MYSQL_DATABASE: kaa
     MYSQL_USER: sqladmin
-    MYSQL_PASSWORD: Kokkeli13
+    MYSQL_PASSWORD: adminkadmin
   expose:
-  - "3306"
+    - "3306"
