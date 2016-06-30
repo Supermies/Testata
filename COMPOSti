@@ -1,20 +1,16 @@
-Cassandra:
+cassandra:
   ports:
-  - 9042:9042/tcp
-  - 9160:9160/tcp
+  - "9042"
+  - "9160"
   environment:
     RANCHER_ENABLE: 'true'
   labels:
     io.rancher.container.pull_image: always
   tty: true
-  image: pboos/rancher-cassandra:3.1
+  image: pboos/rancher-cassandra
   volumes:
   - /var/lib/cassandra
   stdin_open: true
-#mongodbhost:
-#  ports:
-#  - 27017:27017/tcp
-#  image: mongo
 Kaa:
   ports:
     - "22:22"
@@ -38,8 +34,7 @@ Kaa:
   image: supermies/kaa
   links:
   - mariadb
-# - mongodbhost:mongodbhost
-  - Cassandra:Cassandra
+  - cassandra:cassandra
   - zookeeper
   stdin_open: true
 zookeeper:
@@ -50,15 +45,10 @@ zookeeper:
   image: jplock/zookeeper
   links:
   - mongodbhost:mongodbhost
-  - Cassandra:Cassandra
+  - cassandra:cassandra
   - mariadb
   volumes:
   - /opt/zk/data
-#postgreshost:
-#  environment:
-#    POSTGRES_DB: kaa
-#    POSTGRES_PASSWORD: admin
-#  image: postgres
 mariadb:
   image: mariadb:5.5
   environment:
