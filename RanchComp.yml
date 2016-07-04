@@ -1,4 +1,5 @@
 cassandra:
+  scale: 1
   health_check:
     port: 9046
     interval: 5000
@@ -16,7 +17,7 @@ zookeeper:
     response_timeout: 5000
     healthy_threshold: 2
 mariadb:
-  scale: 2
+  scale: 1
   health_check:
     port: 3306
     interval: 5000
