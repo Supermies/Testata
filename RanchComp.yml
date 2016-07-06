@@ -1,7 +1,7 @@
 cassandra:
   scale: 1
   health_check:
-    port: 9046
+    port: 9042
     interval: 5000
     unhealthy_threshold: 3
     strategy: recreate
