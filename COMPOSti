@@ -7,7 +7,7 @@ cassandra:
   labels:
     io.rancher.container.pull_image: always
   tty: true
-  image: pboos/rancher-cassandra
+  image: pboos/rancher-cassandra:3.1
   volumes:
   - /var/lib/cassandra
   stdin_open: true
