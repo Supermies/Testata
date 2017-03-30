@@ -1,10 +1,5 @@
 #!/bin/bash
-openssl genrsa -out domain.key 4096
-openssl req -new -x509 -text -key domain.key -out domain.crt
-mkdir /certs
-mv domain.key /certs
-mv domain.crt /certs
-docker run -d -p 5000:5000 --restart=always --name registry   -v `pwd`/certs:/certs   -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt   -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key   registry:2
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
 docker pull mongo && docker tag mongo registry:5000/mongo
 docker push registry:5000/mongo
 docker pull redis && docker tag redis registry:5000/redis
