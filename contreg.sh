@@ -1,14 +1,15 @@
 #!/bin/bash
 openssl genrsa -out client.key 4096
-openssl req -new -x509 -text -key client.key -out client.cert
+openssl req -new -x509 -text -key client.key -out client.crt
 mkdir /certs
 mv client.key /certs/
-mv client.cert /certs/
+mv client.crt /certs/
 mkdir /etc/docker/certs.d
 mkdir /etc/docker/certs.d/registry.loc:5000
 cp /certs/client.key /etc/docker/certs.d/registry.loc:5000
-cp /certs/client.cert /etc/docker/certs.d/registry.loc:5000/client.cert
-docker run -d -p 5000:5000 --restart=always --name registry   -v /certs:/certs   -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/client.crt   -e REGISTRY_HTTP_TLS_KEY=/certs/client.key   registry:2
+cp /certs/client.crt /etc/docker/certs.d/registry.loc:5000/client.cert
+cp /certs/client.crt /etc/docker/certs.d/registry.loc:5000/ca.crt
+docker run -d -p 5000:5000 --restart=always --name registry   -v `pwd`/certs:/certs   -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/client.crt   -e REGISTRY_HTTP_TLS_KEY=/certs/client.key   registry:2
 service docker restart
 docker pull mongo && docker tag mongo registry.loc:5000/mongo
 docker push registry.loc:5000/mongo
